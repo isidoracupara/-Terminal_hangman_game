@@ -1,15 +1,13 @@
 import random
 from typing import List
 
-possible_words: List[str] = ['becode', 'learning', 'mathematics', 'sessions', 'device','rocket', 'science','Online', 'piracy','Reinstall', 'programs',
-        'search', 'engine','Social', 'media', 'networks', 'technology','Surfing', 'web','click', 'icon','crash','Log','upgrade', 'computer', 'system',
-        'Wireless', 'hotspots','Access', 'Internet','Advances','Backup', 'files','rapidly', 'obsolete','literate','Control', 'remotely','Downloading',
-        'Electronic', 'Transfer','Emerging', 'technology','screen','Hacking', 'network','access','copy']
-
 
 class Hangman:
     """A class that will play the hangman game."""
-
+    possible_words: List[str] = ['becode', 'learning', 'mathematics', 'sessions', 'device','rocket', 'science','Online', 'piracy','Reinstall', 'programs',
+        'search', 'engine','Social', 'media', 'networks', 'technology','Surfing', 'web','click', 'icon','crash','Log','upgrade', 'computer', 'system',
+        'Wireless', 'hotspots','Access', 'Internet','Advances','Backup', 'files','rapidly', 'obsolete','literate','Control', 'remotely','Downloading',
+        'Electronic', 'Transfer','Emerging', 'technology','screen','Hacking', 'network','access','copy']
     
     def __init__(self):
         """Method that creates object from class, defines variables.
@@ -19,12 +17,12 @@ class Hangman:
         self.wrongly_guessed_letters: list of strings to which valid but incorrect user inputs (guesses) will be added.
         self.turn_count: an int to which 1 is added every time the user inputs.
         self.lives: an int from which 1 is subtracted every time the user input is incorrect."""
-        self.word_to_find: str = random.choice(possible_words).upper()
+        self.word_to_find: str = random.choice(Hangman.possible_words).upper()
         self.word_letters: List[str] = list(self.word_to_find) #letters in the word
         self.well_guessed_letters: List[str] = [] #right guess
         self.wrongly_guessed_letters: List [str] = [] #wrong guess
         self.turn_count: int = 0
-        self.lives: int = 5
+        self.lives: int = 6
 
 
     def play(self):
@@ -33,6 +31,26 @@ class Hangman:
         while len(self.word_letters) > 0 and self.lives > 0:
             print("You have used these (wrong) letters: ", " ".join(self.wrongly_guessed_letters)) #displaying wrong letters
             print("Remaining lives: " + str(self.lives))
+
+            #ASCII hangman visual
+            if self.lives == 6:
+                print( "________\n|       |\n|\n|\n|\n|\n|_______________\n")
+
+            elif self.lives == 5:
+                print(" ________\n|       |\n|       O\n|\n|\n|\n|_______________\n")                
+
+            elif self.lives == 4:
+                print(" ________\n|       |\n|       O\n|      /\n|\n|\n|_______________\n")
+
+            elif self.lives == 3:
+                print(" ________\n|       |\n|       O\n|      /|\n|\n|\n|_______________\n")
+
+            elif self.lives == 2:
+                print(" ________\n|       |\n|       O\n|      /|\\n|\n|\n|_______________\n")
+
+            elif self.lives == 1:
+                print(" ________\n|       |\n|       O\n|      /|\\n|      /\n|\n|_______________\n")
+            
 
             #revealed letters in the word
             word_preview: List[str] = [letter if letter in self.well_guessed_letters else '_' for letter in self.word_to_find] #calculates guessed letter or -
@@ -61,7 +79,7 @@ class Hangman:
                 print("Invalid character. Please type in one letter.\n")
     
     def game_over(self):
-        
+        print(" ________\n|       |\n|       O\n|      /|\\n|      / \\n|\n|_______________")
         print("\n*GAME OVER*\n")
         
     def well_played(self):
@@ -75,6 +93,5 @@ class Hangman:
             self.game_over()
         else:
             self.well_played()
-            
             
 
