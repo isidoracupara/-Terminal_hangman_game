@@ -46,7 +46,6 @@ class Hangman:
             if len(user_letter) == 1 and user_letter.isalpha(): #checking if input is 1 long and a string
                 self.turn_count += 1
                 if user_letter in self.word_letters:
-                    # self.word_letters = list(filter(lambda letter:letter != user_letter, self.word_letters))
                     self.word_letters: List[str] = [letter for letter in self.word_letters if letter != user_letter]
                     self.well_guessed_letters.append(user_letter)
                 
