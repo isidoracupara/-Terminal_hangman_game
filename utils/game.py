@@ -29,8 +29,6 @@ class Hangman:
         """Method that plays the hangman game, calculates wrong or right guess."""
         #checking remaining letters and lives
         while len(self.word_letters) > 0 and self.lives > 0:
-            print("You have used these (wrong) letters: ", " ".join(self.wrongly_guessed_letters)) #displaying wrong letters
-            print("Remaining lives: " + str(self.lives))
 
             #ASCII hangman visual
             if self.lives == 6:
@@ -46,15 +44,20 @@ class Hangman:
                 print(" ________\n|       |\n|       O\n|      /|\n|\n|\n|_______________\n")
 
             elif self.lives == 2:
-                print(" ________\n|       |\n|       O\n|      /|\\n|\n|\n|_______________\n")
+                print(" ________\n|       |\n|       O\n|      /|\\\n|\n|\n|_______________\n")
 
             elif self.lives == 1:
-                print(" ________\n|       |\n|       O\n|      /|\\n|      /\n|\n|_______________\n")
+                print(" ________\n|       |\n|       O\n|      /|\\\n|      /\n|\n|_______________\n")
             
+            
+            print("Remaining lives: " + str(self.lives))
 
             #revealed letters in the word
             word_preview: List[str] = [letter if letter in self.well_guessed_letters else '_' for letter in self.word_to_find] #calculates guessed letter or -
             print("Your word currently: ", " ".join(word_preview) + "\n") #displays word with revealed letters and -
+            
+             #displaying wrong letters
+            print("You have used these (wrong) letters: ", " ".join(self.wrongly_guessed_letters))
 
             #getting user input
             print("This is a game of hangman. Please input a letter.")
@@ -79,7 +82,7 @@ class Hangman:
                 print("Invalid character. Please type in one letter.\n")
     
     def game_over(self):
-        print(" ________\n|       |\n|       O\n|      /|\\n|      / \\n|\n|_______________")
+        print(" ________\n|       |\n|       O\n|      /|\\\n|      / \\\n|\n|_______________")
         print("\n*GAME OVER*\n")
         
     def well_played(self):
