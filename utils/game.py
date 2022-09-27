@@ -28,27 +28,32 @@ class Hangman:
     def play(self):
         """Method that plays the hangman game, calculates wrong or right guess."""
         #checking remaining letters and lives
-        while len(self.word_letters) > 0 and self.lives > 0:
-
-            #ASCII hangman visual
-            if self.lives == 6:
-                print( "________\n|       |\n|\n|\n|\n|\n|_______________\n")
-
-            elif self.lives == 5:
-                print(" ________\n|       |\n|       O\n|\n|\n|\n|_______________\n")                
-
-            elif self.lives == 4:
-                print(" ________\n|       |\n|       O\n|      /\n|\n|\n|_______________\n")
-
-            elif self.lives == 3:
-                print(" ________\n|       |\n|       O\n|      /|\n|\n|\n|_______________\n")
-
-            elif self.lives == 2:
-                print(" ________\n|       |\n|       O\n|      /|\\\n|\n|\n|_______________\n")
-
-            elif self.lives == 1:
-                print(" ________\n|       |\n|       O\n|      /|\\\n|      /\n|\n|_______________\n")
+        while len(self.word_letters) > 0 and self.lives > 0: 
             
+            #getting user input
+            print("This is a game of hangman. Please input a letter.")
+            user_letter: str = input("Guess a letter: ").upper()
+
+            #ASCII hangman visual add case
+            match self.lives:
+                case 6:
+                    print( "________\n|       |\n|\n|\n|\n|\n|_______________\n")
+
+                case 5:
+                    print(" ________\n|       |\n|       O\n|\n|\n|\n|_______________\n")                
+
+                case 4:
+                    print(" ________\n|       |\n|       O\n|      /\n|\n|\n|_______________\n")
+
+                case 3:
+                    print(" ________\n|       |\n|       O\n|      /|\n|\n|\n|_______________\n")
+
+                case 2:
+                    print(" ________\n|       |\n|       O\n|      /|\\\n|\n|\n|_______________\n")
+
+                case 1:
+                    print(" ________\n|       |\n|       O\n|      /|\\\n|      /\n|\n|_______________\n")
+                
             
             print("Remaining lives: " + str(self.lives))
 
@@ -59,9 +64,6 @@ class Hangman:
              #displaying wrong letters
             print("You have used these (wrong) letters: ", " ".join(self.wrongly_guessed_letters))
 
-            #getting user input
-            print("This is a game of hangman. Please input a letter.")
-            user_letter: str = input("Guess a letter: ").upper()
 
             #calculation for valid input
             if len(user_letter) == 1 and user_letter.isalpha(): #checking if input is 1 long and a string
