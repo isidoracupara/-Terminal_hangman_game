@@ -1,7 +1,7 @@
 import random
 from typing import List
 
-possible_words = ['becode', 'learning', 'mathematics', 'sessions', 'device','rocket', 'science','Online', 'piracy','Reinstall', 'programs',
+possible_words: List[str] = ['becode', 'learning', 'mathematics', 'sessions', 'device','rocket', 'science','Online', 'piracy','Reinstall', 'programs',
         'search', 'engine','Social', 'media', 'networks', 'technology','Surfing', 'web','click', 'icon','crash','Log','upgrade', 'computer', 'system',
         'Wireless', 'hotspots','Access', 'Internet','Advances','Backup', 'files','rapidly', 'obsolete','literate','Control', 'remotely','Downloading',
         'Electronic', 'Transfer','Emerging', 'technology','screen','Hacking', 'network','access','copy']
@@ -13,8 +13,8 @@ class Hangman:
     
     def __init__(self):
         """Method that creates object from class, defines variables.
-        self.word_to_find: random string from the list that we will work with and try to guess.
-        self.word_letters: string that stores letters from self.word_to_find and check how many letters are left.
+        self.word_to_find: random string from possible_words list that we will work with and try to guess.
+        self.word_letters: string that stores letters from self.word_to_find and is used to keep track of how many letters have been guessed.
         self.well_guessed_letters: list of strings to which correct user inputs (guesses) will be added .
         self.wrongly_guessed_letters: list of strings to which valid but incorrect user inputs (guesses) will be added.
         self.turn_count: an int to which 1 is added every time the user inputs.
