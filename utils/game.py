@@ -83,7 +83,8 @@ class Hangman:
     
     def game_over(self):
         print(" ________\n|       |\n|       O\n|      /|\\\n|      / \\\n|\n|_______________")
-        print("\n*GAME OVER*\n")
+        print("\n*GAME OVER*")
+        print(f"The word was {self.word_to_find}.\n")
         
     def well_played(self):
         print (f"\n*CONGRATS!* You found the word: {self.word_to_find} in {self.turn_count} turns with {self.lives} lives left!\n")
