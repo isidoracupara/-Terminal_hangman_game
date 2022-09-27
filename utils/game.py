@@ -54,10 +54,10 @@ class Hangman:
 
             #revealed letters in the word
             word_preview: List[str] = [letter if letter in self.well_guessed_letters else '_' for letter in self.word_to_find] #calculates guessed letter or -
-            print("Your word currently: ", " ".join(word_preview) + "\n") #displays word with revealed letters and -
+            print("Your word currently: ", " ".join(word_preview)) #displays word with revealed letters and -
             
              #displaying wrong letters
-            print("You have used these (wrong) letters: ", " ".join(self.wrongly_guessed_letters))
+            print("You have used these (wrong) letters: ", " ".join(self.wrongly_guessed_letters) + ".\n")
 
             #getting user input
             print("This is a game of hangman. Please input a letter.")
