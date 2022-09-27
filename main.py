@@ -1,1 +1,3 @@
-import Hangman() from game.py
+from utils.game import Hangman
+
+hangman = Hangman()
